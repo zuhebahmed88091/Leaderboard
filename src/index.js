@@ -31,5 +31,4 @@ submitBtn.addEventListener('click', async (e) => {
   await createData(data);
   nameInput.value = '';
   scoreInput.value = '';
-  // render();
 });
