@@ -1,0 +1,70 @@
+.leaderboard-content {
+  display: flex;
+}
+
+.recent-wrapper {
+  width: 46%;
+}
+
+.recent-header {
+  display: flex;
+}
+
+.refresh-btn {
+  width: 4rem;
+  height: 2rem;
+  margin-top: 5%;
+  margin-left: 5%;
+  box-shadow: 1px 2px;
+  font-weight: bold;
+  background: ghostwhite;
+  cursor: pointer;
+}
+
+.add-wrapper {
+  margin-left: 13%;
+}
+
+.list-wrap {
+  list-style: none;
+  padding-left: 0;
+  border: 2px solid #2b2d42;
+  box-shadow: 1px 2px;
+}
+
+.recent-score {
+  padding-left: 0;
+}
+
+.list-item {
+  list-style-type: none;
+  padding: 3%;
+}
+
+.list-item:nth-child(odd) {
+  background-color: #8d99ae;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-wrapper input {
+  margin-bottom: 4%;
+  border-radius: 0.4rem;
+  height: 1.5rem;
+  width: 15rem;
+}
+
+.submit-btn-wrapper {
+  text-align: right;
+}
+
+.submit-btn {
+  box-shadow: 1px 2px;
+  font-weight: bold;
+  background: ghostwhite;
+  cursor: pointer;
+  padding: 2%;
+}
