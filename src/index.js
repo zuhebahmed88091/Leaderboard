@@ -1,46 +1,35 @@
 import _ from 'lodash';
 import './index.css';
+import { game, createData, getData } from './modules/apifunction.js';
 
-const recentWrapper = document.getElementById('recent-wrapper');
-const recentDiv = document.getElementById('recent');
-const recentScore = document.getElementById('recent-score');
+const refreshBtn = document.getElementById('refresh-btn');
+const submitBtn = document.getElementById('submit-btn');
 
-const list = [
-  {
-    name: 'Arnold',
-    score: '101',
-    index: 1,
-  },
-  {
-    name: 'Timothy',
-    score: '10',
-    index: 2,
-  },
-  {
-    name: 'Priya',
-    score: '50',
-    index: 3,
-  },
-  {
-    name: 'Rey',
-    score: '52',
-    index: 4,
-  },
-];
-
-const render = () => {
-  const listWrapper = document.createElement('div');
-  listWrapper.classList.add('list-wrap');
-  list.map((item) => {
+const render = async () => {
+  const data = await getData();
+  const recentScore = document.getElementById('recent-score');
+  recentScore.innerHTML = '';
+  const sortedData = _.sortBy(data, 'score');
+  sortedData.forEach((item) => {
     const listItem = document.createElement('li');
     listItem.classList.add('list-item');
-    listItem.id = item.index;
-    listItem.innerText = `${item.name}: ${item.score}`;
+    listItem.innerText = `${item.user}: ${item.score}`;
     recentScore.appendChild(listItem);
-    listWrapper.appendChild(recentScore);
-    recentDiv.appendChild(listWrapper);
-    return recentWrapper.appendChild(recentDiv);
   });
 };
 
-window.addEventListener('load', render);
+refreshBtn.addEventListener('click', render);
+
+submitBtn.addEventListener('click', async (e) => {
+  e.preventDefault();
+  const nameInput = document.getElementById('name-input');
+  const scoreInput = document.getElementById('score-input');
+  const data = {
+    user: nameInput.value,
+    score: Number(scoreInput.value),
+  };
+  await createData(data);
+  nameInput.value = '';
+  scoreInput.value = '';
+  // render();
+});
